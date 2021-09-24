@@ -3,9 +3,15 @@ import { Link } from "react-router-dom";
 
 export default class NavBar extends Component {
   render() {
+    let button;
+    if (this.props.mode === 'light') {
+      button = <label className="form-check-label" htmlFor="mode">Dark Mode</label>
+    } else {
+      button = <label className="form-check-label" htmlFor="mode">Light Mode</label>
+    }
     return (
       <div>
-        <nav className="navbar navbar-expand-lg navbar-dark text-dark bg-primary fixed-top">
+        <nav className={`navbar navbar-expand-lg navbar-${this.props.mode} text-${this.props.mode === 'light' ? 'dark' : 'light'} bg-${this.props.mode} fixed-top`}>
           <div className="container-fluid">
             <Link className="navbar-brand" to="/">
               DigitalMedia
@@ -58,7 +64,12 @@ export default class NavBar extends Component {
                     Technology
                   </Link>
                 </li>
-              </ul>
+                </ul>
+              <div className={`form-check form-switch text-${this.props.mode === 'light' ? 'dark' : 'light'}`}>
+                <input className="form-check-input" onClick={this.props.toggle} type="checkbox" id="mode" />
+                {button}
+              </div>
+
             </div>
           </div>
         </nav>

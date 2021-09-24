@@ -1,15 +1,18 @@
 // import React, { useEffect } from "react";
 // import { v4 as uuidv4 } from "uuid";
 import React from "react";
-import { makeStyles, createStyles } from "@material-ui/core/styles";
+import { makeStyles,createStyles } from '@mui/styles';
+// import Card from "@material-ui/core/Card";
+// import CardMedia from "@material-ui/core/CardMedia";
+// import CardContent from "@material-ui/core/CardContent";
+// import Typography from "@material-ui/core/Typography";
+// import Button from "@material-ui/core/Button";
+// import Modal from "@mui/material/Modal";
+import {Button, Typography, CardContent, CardMedia, Card} from "@mui/material";
 
-import Card from "@material-ui/core/Card";
-import CardMedia from "@material-ui/core/CardMedia";
-import CardContent from "@material-ui/core/CardContent";
-import Typography from "@material-ui/core/Typography";
-import Button from "@material-ui/core/Button";
 
-const useStyles = makeStyles((theme) =>
+
+const useStyles = makeStyles(() =>
   createStyles({
     size: {
       padding: "0",
@@ -23,9 +26,8 @@ const useStyles = makeStyles((theme) =>
   })
 );
 
-export default function Recipelist({recipe}) {
+export default function Recipelist({ recipe }) {
   const classes = useStyles();
-
   return (
     recipe["recipe"]["image"].match(/\.(jpeg|jpg|gif|png)$/) != null && (
       <>
@@ -49,7 +51,6 @@ export default function Recipelist({recipe}) {
             Get Recipe
           </Button>
         </Card>
-        
       </>
     )
   );

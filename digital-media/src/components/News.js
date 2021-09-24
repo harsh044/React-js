@@ -62,7 +62,7 @@ export default class News extends Component {
   render() {
     return (
       <>
-        <h2 className="text-center" style={{ marginTop: "80px" }}>
+        <h2 className={`text-center text-${this.props.mode==='light'?'dark':'light'}`} style={{ marginTop: "80px" }}>
           Digital-Media from {this.capitalizeFirstLetter(this.props.category)}
         </h2>
         {this.state.loading && <Loader />}
@@ -78,7 +78,7 @@ export default class News extends Component {
               {this.state.article.map((element) => {
                 return (
                   <div className="col-md-4 col-sm-12 my-3" key={element.url}>
-                    <NewsItem
+                    <NewsItem 
                       title={element.title ? element.title.slice(0, 35) : ""}
                       description={
                         element.description

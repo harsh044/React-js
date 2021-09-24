@@ -1,13 +1,17 @@
 import Axios from "axios";
 import { useState } from "react";
 import Recipelist from "./components/Recipelist";
-import Container from '@material-ui/core/Container';
-import Grid from '@material-ui/core/Grid';
-import { makeStyles } from '@material-ui/core/styles';
-import Typography from '@material-ui/core/Typography';
-import TextField from '@material-ui/core/TextField';
-import Button from '@material-ui/core/Button';
+import { makeStyles } from '@mui/styles';
+// import Container from '@material-ui/core/Container';
+// import Grid from '@material-ui/core/Grid';
+// import { makeStyles } from '@material-ui/core/styles';
+// import Typography from '@material-ui/core/Typography';
+// import TextField from '@material-ui/core/TextField';
+// import Button from '@material-ui/core/Button';
 // import { Paper } from "@material-ui/core";
+
+import {Button,TextField,Typography,Grid,Container} from '@mui/material';
+import { createTheme, ThemeProvider } from '@mui/material/styles';
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -18,7 +22,7 @@ const useStyles = makeStyles((theme) => ({
     margin: '40px 0',
   },
   text_filed: {
-    margin: theme.spacing(1),
+    margin: '20px',
     width: '25ch',
     height: '5ch',
   },
@@ -28,10 +32,11 @@ const useStyles = makeStyles((theme) => ({
   },
   item: {
     width: '20%',
-    padding: theme.spacing(2),
-    color: theme.palette.text.secondary,
+    padding: '2px',
+    color: "grey",
   }
 }));
+const theme = createTheme();
 
 function App() {
   const [query, setquery] = useState("");
@@ -55,6 +60,7 @@ function App() {
   const classes = useStyles();
   return (
     <>
+    <ThemeProvider theme={theme}>
       <Container className={classes.root}>
         <Typography variant="h4">
           Welcome to recipe App
@@ -84,6 +90,7 @@ ingredient Name" value={query}
             })}
         </Grid>
       </Container >
+    </ThemeProvider>
     </>
   );
 }
